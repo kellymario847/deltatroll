@@ -7,23 +7,27 @@ on:
 
 jobs:
   build:
-    runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-14, macos-13]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: 装工具链
+      - name: Setup toolchain
         run: |
           brew install xcodegen ldid-procursus
 
-      - name: 拉依赖
+      - name: Fetch deps
         run: bash Scripts/fetch_deps.sh
 
-      - name: 构建 IPA
+      - name: Build IPA
         run: bash Scripts/build_ipa.sh
 
-      - name: 上传产物
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: DeltaTroll-trollstore
+          name: DeltaTroll-trollstore-${{ matrix.os }}
           path: build/DeltaTroll.trollstore.ipa
           retention-days: 7
