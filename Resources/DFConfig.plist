@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ProcessNames</key>
+	<array>
+		<string>DeltaForce</string>
+		<string>delta</string>
+		<string>DeltaForceClient</string>
+	</array>
+	<key>EntityListPattern</key>
+	<string>08 01 00 B0 08 02 40 F9</string>
+	<key>EntityListAddend</key>
+	<integer>0</integer>
+	<key>EntityListRVA</key>
+	<integer>0</integer>
+	<key>ViewMatrixPattern</key>
+	<string>00 04 00 BD 01 04 40 BD</string>
+	<key>ViewMatrixAddend</key>
+	<integer>0</integer>
+	<key>ViewMatrixRVA</key>
+	<integer>0</integer>
+	<key>NodeNext</key>
+	<integer>16</integer>
+	<key>NodeEntity</key>
+	<integer>24</integer>
+	<key>EntOrigin</key>
+	<integer>416</integer>
+	<key>EntHealth</key>
+	<integer>708</integer>
+	<key>EntTeam</key>
+	<integer>716</integer>
+	<key>EntName</key>
+	<integer>576</integer>
+	<key>EntVisibleFlags</key>
+	<integer>0</integer>
+	<key>VisibleBit</key>
+	<integer>0</integer>
+	<key>MaxDistance</key>
+	<integer>300</integer>
+</dict>
+</plist>

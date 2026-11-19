@@ -1,0 +1,64 @@
+name: DeltaTroll
+options:
+  bundleIdPrefix: com.apple.security
+  deploymentTarget:
+    iOS: "14.0"
+  createIntermediateGroups: true
+
+targets:
+  DeltaTroll:
+    type: application
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Sources
+      - path: Resources
+      - path: Deps/imgui
+        includes:
+          - "imgui*.cpp"
+      - path: Deps/imgui/backends
+        includes:
+          - "imgui_impl_metal.mm"
+      - path: Deps/libkfd
+        includes:
+          - "libkfd.c"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.apple.security.hud
+        PRODUCT_NAME: DeltaTroll
+        DEVELOPMENT_TEAM: ""
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+        SWIFT_VERSION: "5.0"
+        CLANG_ENABLE_MODULES: YES
+        GCC_ENABLE_CPP_EXCEPTIONS: YES
+        GCC_ENABLE_CPP_RTTI: YES
+        HEADER_SEARCH_PATHS:
+          - "$(SRCROOT)/Deps/imgui"
+          - "$(SRCROOT)/Deps/imgui/backends"
+          - "$(SRCROOT)/Deps/libkfd"
+          - "$(SRCROOT)/Deps/xpf/libxpf"
+        OTHER_LDFLAGS:
+          - "-lz"
+          - "-framework MetalKit"
+          - "-framework IOSurface"
+          - "-framework IOKit"
+        SWIFT_OBJC_BRIDGING_HEADER: Sources/Bridge.h
+        SWIFT_PRECOMPILE_BRIDGING_HEADER: NO
+        GCC_INPUT_FILETYPE: automatic
+    info:
+      path: Resources/Info.plist
+      properties:
+        CFBundleDisplayName: "DeltaTroll"
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1.0.0"
+        LSRequiresIPhoneOS: YES
+        UIRequiredDeviceCapabilities: [arm64]
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: YES
+        UIBackgroundModes: [audio, fetch, processing, voip]

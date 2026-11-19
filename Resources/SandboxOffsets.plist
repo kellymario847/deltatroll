@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>proc_ucred</key>
+	<integer>96</integer>
+	<key>ucred_label</key>
+	<integer>104</integer>
+	<key>label_sandbox</key>
+	<integer>16</integer>
+</dict>
+</plist>
