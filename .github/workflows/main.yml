@@ -1,0 +1,29 @@
+name: Build DeltaTroll IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 装工具链
+        run: |
+          brew install xcodegen ldid-procursus
+
+      - name: 拉依赖
+        run: bash Scripts/fetch_deps.sh
+
+      - name: 构建 IPA
+        run: bash Scripts/build_ipa.sh
+
+      - name: 上传产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: DeltaTroll-trollstore
+          path: build/DeltaTroll.trollstore.ipa
+          retention-days: 7
