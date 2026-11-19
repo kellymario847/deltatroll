@@ -13,7 +13,7 @@ jobs:
 
       - name: 装工具链
         run: |
-          brew install xcodegen ldid-procursous
+          brew install xcodegen ldid-procursus
 
       - name: 拉依赖
         run: bash Scripts/fetch_deps.sh
