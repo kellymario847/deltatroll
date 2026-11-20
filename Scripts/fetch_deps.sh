@@ -26,8 +26,19 @@ clone libkfd \
   https://github.com/felix-pb/kfd.git \
   https://gitclone.com/github.com/felix-pb/kfd.git
 
-if [ -d libkfd ] && [ ! -f libkfd/libkfd.c ]; then
-  printf '#include "libkfd.h"\n' > libkfd/libkfd.c
+if [ -d libkfd ]; then
+  if [ ! -f libkfd/libkfd.h ]; then
+    found=$(find libkfd -maxdepth 3 -name "libkfd.h" | head -1)
+    if [ -n "$found" ]; then
+      cp "$found" libkfd/libkfd.h
+      echo ">> libkfd.h 归位: $found"
+    fi
+  fi
+  if [ ! -f libkfd/libkfd.c ]; then
+    printf '#include "libkfd.h"\n' > libkfd/libkfd.c
+  fi
+  echo ">> libkfd 头文件清单:"
+  find libkfd -maxdepth 2 -name "*.h" | head -20
 fi
 
 clone xpf \
