@@ -68,10 +68,16 @@ struct MainView: View {
                 log(line ?? "")
                 if done {
                     log("内核读写已就绪")
-                    DFClient.shared().attach { ok in
+                    DispatchQueue.global().async {
+                        var err: NSString?
+                        let ok = DFClient.shared().attachWithError(&err)
                         DispatchQueue.main.async {
-                            log(ok ? "已附加 Delta Force" : "未找到游戏进程，进入游戏后重试")
-                            if ok { OverlayBridge.shared().showOverlay() }
+                            if ok {
+                                log("已附加 Delta Force")
+                                OverlayBridge.shared().showOverlay()
+                            } else {
+                                log("未找到游戏进程，进入游戏后重试")
+                            }
                         }
                     }
                 }
