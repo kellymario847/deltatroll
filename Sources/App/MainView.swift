@@ -63,9 +63,9 @@ struct MainView: View {
 
     private func runExploit() {
         log("开始内核利用")
-        ExploitController.shared.run { line, done in
+        ExploitController.shared().run { line, done in
             DispatchQueue.main.async {
-                log(line)
+                log(line ?? "")
                 if done {
                     log("内核读写已就绪")
                     DFClient.shared().attach { ok in
